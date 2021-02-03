@@ -24,6 +24,11 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "FrameTimer.h"
+#include "Rectangle.h"
+#include "Ball.h"
+#include "Brick.h"
+#include "Sound.h"
+#include "Paddel.h"
 
 class Game
 {
@@ -43,6 +48,17 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	static constexpr float brick_width = 30;
+	static constexpr float brick_height = 20;
+	static constexpr int n_rows = 10;
+	static constexpr int n_column = 24;
 	FrameTimer ft;
+	am::Rectangle walls;
+	Ball ball;
+	Brick bricks[n_rows * n_column];
+	Color bricks_color[n_rows] = { Colors::Blue, Colors::Cyan, Colors::Green, Colors::Magenta, Colors::White };
+	Paddel pad;
+	Sound hit_pad;
+	Sound hit_brick;
 	/********************************/
 };

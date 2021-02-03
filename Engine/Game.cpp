@@ -21,11 +21,27 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd )
+	wnd(wnd),
+	gfx(wnd),
+	walls(Vec2(0.0f, 0.0f), Vec2(float(Graphics::ScreenWidth), float(Graphics::ScreenHeight))),
+	ball(Vec2(100.0f, 200.0f), Vec2(200.0f, 200.0f)),
+	pad(Vec2(500, 500), 50, 15),
+	hit_pad(L"Sounds\\arkpad.wav"),
+	hit_brick(L"Sounds\\arkbrick.wav")
 {
+	const Vec2 top_left = { brick_width, brick_height };
+
+	for (int y = 0; y < n_rows; y++)
+	{
+		const Color c = bricks_color[y%5];//5 is the number of colors in the arry bricks_color
+		for (int x = 0; x < n_column; x++)
+		{
+			bricks[y * n_column + x] = Brick(
+				am::Rectangle(Vec2(top_left.x + x * brick_width, top_left.y + y * brick_height), brick_width, brick_height), c);
+		}
+	}
 }
 
 void Game::Go()
@@ -39,8 +55,30 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
+	ball.update(dt);
+	pad.update(wnd.kbd, dt);
+	pad.is_collide_with_walls(walls);
+
+	if (pad.is_collide_with_ball(ball))
+		hit_pad.Play();
+	if (ball.is_collide_with_walls(walls))
+		hit_pad.Play();
+	for (Brick& brick : bricks)
+	{
+		if (brick.is_collide_with_ball(ball))
+		{
+			hit_brick.Play();
+			break;
+		}
+	}
 }
 
 void Game::ComposeFrame()
 {
+	for (const Brick& brick : bricks)
+	{
+		brick.draw(gfx);
+	}
+	ball.draw(gfx);
+	pad.draw(gfx);
 }
