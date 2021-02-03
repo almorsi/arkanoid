@@ -3,7 +3,8 @@
 Brick::Brick(const am::Rectangle& rectangle, const Color& color)
 	:
 	rect(rectangle),
-	col(color)
+	col(color), 
+	center(rect.left + rect.right/2.0f, rect.top + rect.bottom/2.0f)
 {
 }
 

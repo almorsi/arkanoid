@@ -3,6 +3,7 @@
 #include "Colors.h"
 #include "Graphics.h"
 #include "Ball.h"
+#include "Vec2.h"
 class Brick
 {
 public:
@@ -14,5 +15,6 @@ private:
 	static constexpr float padding = 1.0f;
 	am::Rectangle rect;
 	Color col;
+	Vec2 center;
 	bool destroyed = false;
 };
