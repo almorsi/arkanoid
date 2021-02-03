@@ -14,6 +14,7 @@ public:
 	void rebound_x();
 	void rebound_y();
 	am::Rectangle get_rectangle() const;
+	Vec2 get_velocity() const;
 private:
 	static constexpr float radius = 7.0f;//don't change this number because spriteCodex depend on it
 	Vec2 pos;//the position of the center

@@ -64,3 +64,8 @@ am::Rectangle Ball::get_rectangle() const
 {
 	return am::Rectangle::init_from_center(pos,radius, radius);
 }
+
+Vec2 Ball::get_velocity() const
+{
+	return vel;
+}
