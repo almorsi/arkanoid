@@ -23,6 +23,7 @@
 #include <wrl.h>
 #include "ChiliException.h"
 #include "Colors.h"
+#include "Rectangle.h"
 
 class Graphics
 {
@@ -57,6 +58,10 @@ public:
 	}
 	void PutPixel( int x,int y,Color c );
 	void DrawRect( int x0,int y0,int x1,int y1,Color c );
+	void draw_rectangle(const am::Rectangle rect, Color c)
+	{
+		DrawRect(rect.left, rect.top, rect.right, rect.bottom, c);
+	}
 	void DrawCircle( int x,int y,int radius,Color c );
 	~Graphics();
 private:
