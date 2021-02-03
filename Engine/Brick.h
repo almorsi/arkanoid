@@ -15,6 +15,8 @@ private:
 	static constexpr float padding = 1.0f;
 	am::Rectangle rect;
 	Color col;
+	float half_width;
+	float half_height;
 	Vec2 center;
 	bool destroyed = false;
 };
