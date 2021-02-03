@@ -12,7 +12,7 @@ void Brick::draw(Graphics& gfx) const
 {
 	if (!destroyed)
 	{
-		gfx.draw_rectangle(rect, col);
+		gfx.draw_rectangle(rect.get_expanded(padding), col);
 	}
 }
 
