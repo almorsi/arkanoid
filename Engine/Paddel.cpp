@@ -33,7 +33,7 @@ bool Paddel::is_collide_with_ball(Ball& ball) const
 {
 	if (ball.get_rectangle().is_overlapping_with(get_rectangle()))
 	{
-		ball.reset_vel_after_pad_collision(Vec2(ball.get_pos()- pos));
+		ball.reset_vel_after_pad_collision(Vec2(ball.get_pos()- pos).GetNormalized());
 		return true;
 	}
 	return false;

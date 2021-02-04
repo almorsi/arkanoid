@@ -22,7 +22,7 @@ bool Brick::is_collide_with_ball(Ball& ball)
 {
 	if (!destroyed && ball.get_rectangle().is_overlapping_with(rect))
 	{
-		ball.reset_vel_after_pad_collision(Vec2(ball.get_pos() - center));
+		ball.reset_vel_after_pad_collision(Vec2(ball.get_pos() - center).GetNormalized());
 		destroyed = true;
 		return true;
 	}
