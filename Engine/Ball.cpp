@@ -69,3 +69,12 @@ Vec2 Ball::get_velocity() const
 {
 	return vel;
 }
+
+
+bool Ball::is_collide_with_ground(const am::Rectangle& walls) const
+{
+	const float half_height = (get_rectangle().bottom - get_rectangle().top) / 2.0f;
+	if (pos.y + half_height > walls.bottom)
+		return true;
+	return false;
+}

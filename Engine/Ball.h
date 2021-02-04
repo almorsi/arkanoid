@@ -15,6 +15,7 @@ public:
 	void rebound_y();
 	am::Rectangle get_rectangle() const;
 	Vec2 get_velocity() const;
+	bool is_collide_with_ground(const am::Rectangle& walls) const;
 private:
 	static constexpr float radius = 7.0f;//don't change this number because spriteCodex depend on it
 	Vec2 pos;//the position of the center

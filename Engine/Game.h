@@ -60,5 +60,7 @@ private:
 	Paddel pad;
 	Sound hit_pad;
 	Sound hit_brick;
+	Sound game_over;
+	bool is_game_over = false;
 	/********************************/
 };

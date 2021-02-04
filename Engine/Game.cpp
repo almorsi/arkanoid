@@ -29,7 +29,8 @@ Game::Game(MainWindow& wnd)
 	ball(Vec2(100.0f, 200.0f), Vec2(200.0f, 200.0f)),
 	pad(Vec2(500, 500), 50, 15),
 	hit_pad(L"Sounds\\arkpad.wav"),
-	hit_brick(L"Sounds\\arkbrick.wav")
+	hit_brick(L"Sounds\\arkbrick.wav"),
+	game_over(L"Sounds\\game_over.wav")
 {
 	const Vec2 top_left = { brick_width, brick_height };
 
@@ -54,21 +55,29 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	const float dt = ft.Mark();
-	ball.update(dt);
-	pad.update(wnd.kbd, dt);
-	pad.is_collide_with_walls(walls);
-
-	if (pad.is_collide_with_ball(ball))
-		hit_pad.Play();
-	if (ball.is_collide_with_walls(walls))
-		hit_pad.Play();
-	for (Brick& brick : bricks)
+	if (!is_game_over)
 	{
-		if (brick.is_collide_with_ball(ball))
+		const float dt = ft.Mark();
+		ball.update(dt);
+		pad.update(wnd.kbd, dt);
+		pad.is_collide_with_walls(walls);
+
+		if (pad.is_collide_with_ball(ball))
+			hit_pad.Play();
+		if (ball.is_collide_with_ground(walls))
 		{
-			hit_brick.Play();
-			break;
+			is_game_over = true;
+			game_over.Play();
+		}
+		if (ball.is_collide_with_walls(walls) && !is_game_over)
+			hit_pad.Play();
+		for (Brick& brick : bricks)
+		{
+			if (brick.is_collide_with_ball(ball))
+			{
+				hit_brick.Play();
+				break;
+			}
 		}
 	}
 }
@@ -79,6 +88,9 @@ void Game::ComposeFrame()
 	{
 		brick.draw(gfx);
 	}
-	ball.draw(gfx);
+	if (!is_game_over)
+	{
+		ball.draw(gfx);
+	}
 	pad.draw(gfx);
 }
