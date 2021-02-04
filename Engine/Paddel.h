@@ -21,7 +21,7 @@ private:
 	Vec2 pos;//from center
 	float half_width;
 	float half_height;
-	static constexpr float x_vel = 300.0f ;// move only in the x direction
+	static constexpr float x_vel = 600.0f ;// move only in the x direction
 	static constexpr float wing_width = 20;
 	Color wing_col = Colors::Gray;
 

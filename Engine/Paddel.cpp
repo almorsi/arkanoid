@@ -31,49 +31,11 @@ void Paddel::update(const Keyboard& kbd, float dt)
 
 bool Paddel::is_collide_with_ball(Ball& ball) const
 {
-	// ________________  
-	// |	2  |	1  |
-	// |_ _ _ _|_ _ _ _|  DIVIDE THE RECTANGLE INTO FOUR RECTAGNLES TO SOLVE THE PHYSICS BUG
-	// |	3  |	4  |
-	// |______ |_______|
-		using am::Rectangle;
-		const Rectangle rect_1 = Rectangle(Vec2(pos.x, pos.y - half_height), Vec2(pos.x + half_width, pos.y));
-		const Rectangle rect_2 = Rectangle(Vec2(pos.x - half_width, pos.y - half_height), Vec2(pos.x, pos.y));
-		const Rectangle rect_3 = Rectangle(Vec2(pos.x - half_width, pos.y), Vec2(pos.x, pos.y + half_height));
-		const Rectangle rect_4 = Rectangle(Vec2(pos.x, pos.y), Vec2(pos.x + half_width, pos.y + half_height));
-		Vec2 vel = ball.get_velocity();
-		if (ball.get_rectangle().is_overlapping_with(rect_1))
-		{
-			if (vel.x < 0)
-				ball.rebound_x();
-			if (vel.y > 0)
-				ball.rebound_y();
-			return true;
-		}
-		else if (ball.get_rectangle().is_overlapping_with(rect_2))
-		{
-			if (vel.x > 0)
-				ball.rebound_x();
-			if (vel.y > 0)
-				ball.rebound_y();
-			return true;
-		}
-		else if (ball.get_rectangle().is_overlapping_with(rect_3))
-		{
-			if (vel.x > 0)
-				ball.rebound_x();
-			if (vel.y < 0)
-				ball.rebound_y();
-			return true;
-		}
-		else if (ball.get_rectangle().is_overlapping_with(rect_4))
-		{
-			if (vel.x < 0)
-				ball.rebound_x();
-			if (vel.y < 0)
-				ball.rebound_y();
-			return true;
-		}
+	if (ball.get_rectangle().is_overlapping_with(get_rectangle()))
+	{
+		ball.reset_vel_after_pad_collision(Vec2(ball.get_pos()- pos));
+		return true;
+	}
 	return false;
 }
 
