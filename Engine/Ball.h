@@ -22,5 +22,5 @@ private:
 	static constexpr float radius = 7.0f;//don't change this number because spriteCodex depend on it
 	Vec2 pos;//the position of the center
 	Vec2 vel;
-	float vel_scale_after_collison = 10.0f;
+	float vel_scale_after_collison = 20.0f;
 };
