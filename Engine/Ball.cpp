@@ -78,3 +78,13 @@ bool Ball::is_collide_with_ground(const am::Rectangle& walls) const
 		return true;
 	return false;
 }
+
+void Ball::reset_vel_after_pad_collision(const Vec2& vel_in)
+{
+	vel = vel_in * vel_scale_after_collison;
+}
+
+Vec2 Ball::get_pos() const
+{
+	return pos;
+}

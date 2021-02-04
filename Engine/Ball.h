@@ -16,8 +16,11 @@ public:
 	am::Rectangle get_rectangle() const;
 	Vec2 get_velocity() const;
 	bool is_collide_with_ground(const am::Rectangle& walls) const;
+	void reset_vel_after_pad_collision(const Vec2& vel);
+	Vec2 get_pos() const;
 private:
 	static constexpr float radius = 7.0f;//don't change this number because spriteCodex depend on it
 	Vec2 pos;//the position of the center
 	Vec2 vel;
+	float vel_scale_after_collison = 10.0f;
 };
