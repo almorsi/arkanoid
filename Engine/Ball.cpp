@@ -6,6 +6,7 @@ Ball::Ball(const Vec2& center_pos, const Vec2& vel_val)
 	pos(center_pos),
 	vel(vel_val)
 {
+	vel_scale_after_collison = vel.GetLength();
 }
 
 void Ball::draw(Graphics& gfx)const
