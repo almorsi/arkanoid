@@ -14,6 +14,7 @@ void Brick::draw(Graphics& gfx) const
 {
 	if (!destroyed)
 	{
+		// must to be a call to the 3D class and it will draw it
 		gfx.draw_rectangle(rect.get_expanded(-padding), col);
 	}
 }
