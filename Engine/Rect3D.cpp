@@ -47,7 +47,7 @@ void Rect3D::draw_upper_trapeziod(Graphics& gfx) const
 	unsigned char(col.GetG() + unsigned char(shade_scale_upper * (255 - int(col.GetG())))) };
 	draw_triangle_UR(top_left + Vec2(triangle_side, 0.0f), new_col, gfx);
 	gfx.draw_rectangle(am::Rectangle(top_left + Vec2(triangle_side+1,0.0f),width- 2.0f*triangle_side, triangle_side),new_col);
-	draw_triangle_UL(top_left + Vec2(height-triangle_side, 0.0f), new_col, gfx);
+	draw_triangle_UL(top_left + Vec2(width-triangle_side, 0.0f), new_col, gfx);
 }
 
 void Rect3D::draw_bottom_trapeziod(Graphics& gfx) const
