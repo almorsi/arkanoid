@@ -48,15 +48,15 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	static constexpr float brick_width = 30;
-	static constexpr float brick_height = 20;
-	static constexpr int n_rows = 10;
-	static constexpr int n_column = 24;
+	static constexpr float brick_width = 50;
+	static constexpr float brick_height = 30;
+	static constexpr int n_rows = 5;
+	static constexpr int n_column = 12;
 	FrameTimer ft;
 	am::Rectangle walls;
 	Ball ball;
 	Brick bricks[n_rows * n_column];
-	Color bricks_color[n_rows] = { Colors::Blue, Colors::Cyan, Colors::Green, Colors::Magenta, Colors::White };
+	Color bricks_color[n_rows] = { Colors::Red,Colors::Red,Colors::Red,Colors::Red,Colors::Red };
 	Paddel pad;
 	Sound hit_pad;
 	Sound hit_brick;

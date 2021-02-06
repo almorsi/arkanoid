@@ -26,7 +26,7 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	walls(Vec2(0.0f, 0.0f), Vec2(float(Graphics::ScreenWidth), float(Graphics::ScreenHeight))),
-	ball(Vec2(100.0f, 200.0f), Vec2(200.0f, 200.0f)),
+	ball(Vec2(100.0f, 200.0f), Vec2(400.0f, 400.0f)),
 	pad(Vec2(500, 500), 50, 15),
 	hit_pad(L"Sounds\\arkpad.wav"),
 	hit_brick(L"Sounds\\arkbrick.wav"),
@@ -84,7 +84,7 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	for (const Brick& brick : bricks)
+	for (Brick& brick : bricks)
 	{
 		brick.draw(gfx);
 	}
