@@ -63,6 +63,21 @@
     <ClInclude Include="FrameTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paddel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -96,6 +111,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FrameTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Paddel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
