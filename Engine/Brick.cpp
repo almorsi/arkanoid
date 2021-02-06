@@ -10,12 +10,12 @@ Brick::Brick(const am::Rectangle& rectangle, const Color& color)
 {
 }
 
-void Brick::draw(Graphics& gfx) const
+void Brick::draw(Graphics& gfx)
 {
 	if (!destroyed)
 	{
-		// must to be a call to the 3D class and it will draw it
-		gfx.draw_rectangle(rect.get_expanded(-padding), col);
+		rect3D = Rect3D(rect.get_expanded(-padding), col);
+		rect3D.draw(gfx);
 	}
 }
 
